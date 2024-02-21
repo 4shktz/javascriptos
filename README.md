@@ -17,7 +17,7 @@ I made this project a while ago, (to be exact, the 14th May 2023), the code is n
 - [ ] Shut down button
 
 **How to run this**
-1. Go to this (website)[https://4shktz.github.io/javascriptos/] lul.
+1. Go to this [website](https://4shktz.github.io/javascriptos/) lul.
 2. Enjoyyy
 
 PS : if i'm not lazy i'll try to make a better code.
