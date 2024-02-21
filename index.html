@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScriptOS</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/shareon@2/dist/shareon.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/shareon@2/dist/shareon.iife.js" defer init></script>
+</head>
+<body>
+    <div class="monitor">
+        <div>
+            <div id="notepadWindow" class="draggable-window" style="display: none;">
+                <div class="title-bar">Notepad</div>
+                <div class="button-container">
+                    <div class="close-button" onclick="HideWindow('notepadWindow')">X</div>
+                </div>
+                <textarea id="notepadContent" style="width: 99%; height: 92%;"></textarea>
+                <button onclick="saveFile()">Save</button>
+            </div>
+            <div id="wikipediaBrowser" class="draggable-window" style="display: none;">
+                <div class="title-bar">Coli Browser</div>
+                <div class="button-container">
+                    <div class="close-button" onclick="HideWindow('wikipediaBrowser')">X</div>
+                </div>
+                <iframe id="browserFrame" src="https://coli-browser.web.app/" style="width: 100%; height: 100%;"></iframe>
+            </div>
+            <div id="paintWindow" class="not-draggable-window" style="display: none;">
+                <div class="title-bar">Paint</div>
+                <div class="button-container">
+                    <div class="close-button" onclick="HideWindow('paintWindow')">X</div>
+                </div>
+                <canvas id="canvas" style="border: 1px solid #999; width: 100%; height: 93%;"></canvas>
+                <button onclick="clearCanvas()">Clear</button>
+            </div>
+            <div id="compilerWindow" class="draggable-window" style="display: none;">
+                <div class="title-bar">JavaScript Compiler</div>
+                <div class="button-container">
+                    <div class="close-button" onclick="HideWindow('compilerWindow')">X</div>
+                </div>
+                <textarea id="codeInput" style="width: 99%; height: 70%;"></textarea>
+                <div id="output"></div>
+                <button onclick="runCode()">▶️ Run</button>
+                <button onclick="saveCode()">💾 Save</button>
+            </div>
+            <div id="fileExplorer" class="draggable-window" style="display: none;">
+                <div class="title-bar">File Explorer</div>
+                <div class="button-container">
+                    <div class="close-button" onclick="HideWindow('fileExplorer')">X</div>
+                </div>
+                <div id="fileExplorerContent"></div>
+            </div>
+            <div id="fileContent" class="draggable-window" style="display: none;">
+                <div class="title-bar" id="fileContentTitle"></div>
+                <div class="button-container">
+                    <div class="close-button" onclick="HideWindow('fileContent')">X</div>
+                </div>
+                <div id="fileContentBody"></div>
+            </div>
+            <div id="calculator" class="draggable-window" style="display: none; width: 11%; height: 20%;">
+                <div class="title-bar">Calculator</div>
+                <div class="button-container">
+                    <div class="close-button" onclick="HideWindow('calculator')">X</div>
+                </div>
+                <div id="calculatorInput">
+                    <input type="text" id="calcDisplay" disabled>
+                </div>
+                <div id="calculatorButtons">
+                    <button onclick="appendToDisplay('7')">7</button>
+                    <button onclick="appendToDisplay('8')">8</button>
+                    <button onclick="appendToDisplay('9')">9</button>
+                    <button onclick="appendToDisplay('+')">+</button>
+                    <br>
+                    <button onclick="appendToDisplay('4')">4</button>
+                    <button onclick="appendToDisplay('5')">5</button>
+                    <button onclick="appendToDisplay('6')">6</button>
+                    <button onclick="appendToDisplay('-')">-</button>
+                    <br>
+                    <button onclick="appendToDisplay('1')">1</button>
+                    <button onclick="appendToDisplay('2')">2</button>
+                    <button onclick="appendToDisplay('3')">3</button>
+                    <button onclick="appendToDisplay('*')">*</button>
+                    <br>
+                    <button onclick="appendToDisplay('0')">0</button>
+                    <button onclick="appendToDisplay('.')">.</button>
+                    <button onclick="calculate()">=</button>
+                    <button onclick="appendToDisplay('/')">/</button>
+                    <br>
+                    <button onclick="clearDisplay()">C</button>
+                </div>
+            </div>
+        </div>
+        <div class="start">
+            <div class="start_button">
+                <div class="start_logo"></div>
+                <p class="start_text"> Start </p>
+            </div>
+            <div class="start_time">
+                <p class="start_time-text">6:06 PM</p>
+            </div>
+        </div>
+        <div class="start_menu-main">
+            <div class="start_menu-main-side">
+                <div class="start_menu-main-side-text text">
+                    <p class="ninefive">4shktz</p>
+                    <p class="ninefive">by</p>
+                    <p class="ninefive">95</p>
+                    <p class="windows">Windows</p>
+                </div>
+            </div>
+            <div class="start_menu-main-items">
+                <ul class="start_menu-main-items-list1">
+                    <li class="start_menu-main-items-item programs">
+                        <img class="programs-img icon" src="https://cdn.discordapp.com/attachments/1206252392065138712/1209980902076059758/Windows_Folder_1995_open-removebg-preview.png?ex=65e8e587&is=65d67087&hm=51cbd7106924647ad9bbcb995cb54d23eb35aa6c790e75ca0c2bcaa282b1ad11&" alt="Programs">
+                        <p class="start_menu-main-items-item-title programs">
+                            <span class="underline">P</span>rograms
+                        </p>
+                        <div class="start_menu-main-items-item-arrowright"></div>
+                        <ul class="start_menu-sub sub_programs">
+                            <li onclick="openCalculator()" class="start_menu-sub-items-item sub_programs-items">
+                                <img class="icon" src="https://64.media.tumblr.com/c8d12905363fffff08c37f8eca363590/2e42f87909d61a4f-81/s540x810/4c69d12663cfa490bdc6f7f07bd8ae881dcc58cf.png" alt="Calculator">
+                                <p class="start_menu-sub-items-item-title accessories">Calculator</p>
+                                <div class="start_menu-main-items-item-arrowright"></div>
+                            </li>
+                            <li onclick="openWikipedia()" class="start_menu-sub-items-item sub_programs-items">
+                                <img class="icon" src="https://cdn.discordapp.com/attachments/1206252392065138712/1209980171424370758/png-transparent-windows-95-computer-icons-internet-explorer-internet-explorer-microsoft-area-windows-98-removebg-preview.png?ex=65e8e4d9&is=65d66fd9&hm=64d1c9ff78b44e73b2ef6635b1b5ab15d6e5a0baf83d5f5492767b845c1be976&" alt="Browser">
+                                <p class="start_menu-sub-items-item-title startup">Coli Browser</p>
+                                <div class="start_menu-main-items-item-arrowright"></div>
+                            </li>
+                            <li onclick="openFileExplorer()" class="start_menu-sub-items-item sub_programs-items">
+                                <img class="icon" src="https://cdn.discordapp.com/attachments/1206252392065138712/1209980654746599444/gratis-png-directorio-de-windows-95-iconos-de-computadora-de-windows-98-publicidad-de-bienes-esteticos-removebg-preview.png?ex=65e8e54c&is=65d6704c&hm=a563cc16f255134fe1fb092174184331edd85b495d52fc3f7a34c36cc943a035&" alt="Explorer">
+                                <p class="start_menu-sub-items-item-title">File Explorer</p>
+                                <div class="start_menu-main-items-item-arrowright"></div>
+                            </li>
+                            <li onclick='ShowWindow("compilerWindow")' class="start_menu-sub-items-item sub_programs-items">
+                                <img class="icon" src="https://64.media.tumblr.com/0a8c1050bcb86fb9080622b1b6e47a05/404a45651ed80451-54/s540x810/d83a7a23ae7019b498ca4a01cf1c21870ee21ca0.png" alt="Compiler">
+                                <p class="start_menu-sub-items-item-title accessories">Compiler</p>
+                                <div class="start_menu-main-items-item-arrowright"></div>
+                            </li>
+                            <li onclick="openNotepad()" class="start_menu-sub-items-item sub_programs-items">
+                                <img class="icon" src="https://64.media.tumblr.com/5b721f82bf458ec88d5e81c8a0e6c00f/d54cc7b03470c013-98/s540x810/3b87d2f3fe16c2b605250c6ee952dd773003d21b.png" alt="Notepad">
+                                <p class="start_menu-sub-items-item-title startup">Notepad</p>
+                                <div class="start_menu-main-items-item-arrowright"></div>
+                            </li>
+                            <li onclick="openPaint()" class="start_menu-sub-items-item sub_programs-items">
+                                <img class="icon" src="https://cdn.discordapp.com/attachments/1206252392065138712/1209982591302897755/Microsoft_Paint_Logo_1995-1998_Alternative.webp?ex=65e8e71a&is=65d6721a&hm=b09a0bbda407ca7c7b6987b5692012202e92f4c669eb658fb581359dba182c89&" alt="Paint">
+                                <p class="start_menu-sub-items-item-title">Paint</p>
+                                <div class="start_menu-main-items-item-arrowright"></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start_menu-main-items-item documents">
+                        <img class="documents-img icon" src="https://cdn.discordapp.com/attachments/1206252392065138712/1209981816748904591/Windows_95_aesthetic_messages_folder_icon-removebg-preview.png?ex=65e8e661&is=65d67161&hm=17bdc1b28ed82057cf9b49caef0660b7bde9a3dcd9570454ebca45dafe73c70c&" alt="Documents">
+                        <p class="start_menu-main-items-item-title documents">
+                            <span class="underline">D</span>ocuments
+                        </p>
+                        <div class="start_menu-main-items-item-arrowright"></div>
+                    </li>
+                    <li class="start_menu-main-items-item settings">
+                        <div class="settings-img icon bg-img"></div>
+                        <p class="start_menu-main-items-item-title settings">
+                            <span class="underline">S</span>ettings
+                        </p>
+                        <div class="start_menu-main-items-item-arrowright"></div>
+                    </li>
+                    <li class="start_menu-main-items-item find">
+                        <div class="find-img icon bg-img"></div>
+                        <p class="start_menu-main-items-item-title find">
+                            <span class="underline">F</span>ind
+                        </p>
+                        <div class="start_menu-main-items-item-arrowright"></div>
+                    </li>
+                    <li class="start_menu-main-items-item help">
+                        <img class="help-img icon" src="https://cdn.discordapp.com/attachments/1206252392065138712/1209983506571075634/tumblr_7f33e4ecd10e0756edb24934b24ecedd_81cb894f_540-removebg-preview.png?ex=65e8e7f4&is=65d672f4&hm=96a967b32605a3c79efa5a0d1f31f1764db5ffce3c8f6fd0884ee0f61a538ca4&" alt="Help">
+                        <p class="start_menu-main-items-item-title help">
+                            <span class="underline">H</span>elp
+                        </p>
+                    </li>
+                    <li class="start_menu-main-items-item run">
+                        <div class="run-img icon bg-img"></div>
+                        <p class="start_menu-main-items-item-title run">
+                            <span class="underline">R</span>un...
+                        </p>
+                    </li>
+                </ul>
+                <ul class="start_menu-main-items-list2">
+                    <li class="start_menu-main-items-item shutdown">
+                        <div class="shutdown-img icon bg-img"></div>
+                        <p class="start_menu-main-items-item-title shutdown">Sh<span class="underline">u</span>t Down... </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="computer desktop-icon">
+            <div class="computer_icon desktop-icon_icon"></div>
+            <p class="computer_text desktop-icon_text"> My Computer </p>
+        </div>
+        <div onclick="openCalculator()" class="calculator desktop-icon">
+            <div class="calculator_icon desktop-icon_icon"></div>
+            <p class="calculator_text desktop-icon_text"> Calculator </p>
+        </div>
+        <div onclick="openWikipedia()" class="browser desktop-icon">
+            <div class="browser_icon desktop-icon_icon"></div>
+            <p class="browser_text desktop-icon_text"> Coli Browser </p>
+        </div>
+        <div onclick="openFileExplorer()" class="explorer desktop-icon">
+            <div class="explorer_icon desktop-icon_icon"></div>
+            <p class="explorer_text desktop-icon_text"> File Explorer </p>
+        </div>
+        <div onclick='ShowWindow("compilerWindow")' class="javascript desktop-icon">
+            <div class="javascript_icon desktop-icon_icon"></div>
+            <p class="javascript_text desktop-icon_text"> Javascript </p>
+        </div>
+        <div onclick="openNotepad()" class="notepad desktop-icon">
+            <div class="notepad_icon desktop-icon_icon"></div>
+            <p class="notepad_text desktop-icon_text"> Notepad </p>
+        </div>
+        <div onclick="openPaint()" class="paint desktop-icon">
+            <div class="paint_icon desktop-icon_icon"></div>
+            <p class="paint_text desktop-icon_text"> Paint </p>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="scripts/code.js"></script>
+    <script src="scripts/calc.js"></script>
+    <script src="scripts/files.js"></script>
+    <script src="scripts/paint.js"></script>
+    <script src="scripts/desktop.js"></script>
+    <script src="scripts/notepad.js"></script>
+    <script src="scripts/browser.js"></script>
+</body>
+</html>

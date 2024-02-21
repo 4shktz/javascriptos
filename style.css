@@ -1,0 +1,578 @@
+body {
+    background-color: #008080;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.monitor {
+    width: 100%;
+    height: 100vh;
+    background-color: #008080;
+}
+
+.start {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+    background: #c3c6cd;
+    border-top: 3px solid #deebf3;
+    display: flex;
+    justify-content: space-between;
+}
+
+.start_button {
+    width: 80px;
+    height: 72%;
+    background: #c3c6cd;
+    border-top: 2px solid #deebf3;
+    border-left: 2px solid #deebf3;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.start_button:active {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid #deebf3;
+    border-bottom: 2px solid #deebf3;
+}
+
+.start_logo {
+    width: 35px;
+    height: 18px;
+    position: relative;
+}
+
+.start_logo::after {
+    content: "";
+    background: url(https://banner2.kisspng.com/20180821/hrt/kisspng-windows-95-windows-98-microsoft-windows-transparen-windows-95-telegram-stickers-directory-5b7c3cffc178a8.4526616315348687357925.jpg) transparent;
+    background-size: contain;
+    mix-blend-mode: multiply;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+.start_text {
+    font-size: 14px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.start_time {
+    width: 80px;
+    height: 72%;
+    background: #c3c6cd;
+    border-top: 2px solid #85888f;
+    border-left: 2px solid #85888f;
+    border-right: 2px solid #deebf3;
+    border-bottom: 2px solid #deebf3;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.start_time-text {
+    margin: auto;
+    font-size: 12px;
+    user-select: none;
+}
+
+.start_menu-main {
+    background: #c3c6cd;
+    border-top: 2px solid #deebf3;
+    border-left: 2px solid #deebf3;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 20%;
+    display: none;
+    position: absolute;
+    z-index: 50;
+    bottom: 38px;
+    user-select: none;
+}
+
+.start_menu-main-side {
+    background: #85888f;
+    width: 15%;
+}
+
+.start_menu-main-items {
+    padding: 0;
+    width: 100%;
+}
+
+.start_menu-main-side-text {
+    position: relative;
+    margin-top: 202px;
+}
+
+.start_menu-main-side-text {
+    position: relative;
+    margin-top: 202px;
+}
+
+.start_menu-main-side-text .ninefive {
+    color: white;
+    transform: rotate(270deg);
+    margin-bottom: 56px;
+}
+
+.start_menu-main-side-text .windows {
+    font-weight: bold;
+    color: #c3c6cd;
+    transform: rotate(270deg);
+}
+
+.start_menu-main-items-list1 {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #85888f;
+}
+
+.start_menu-main-items-list2 {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #deebf3;
+}
+
+.start_menu-main-items-item {
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.start_menu-main-items-item:hover {
+    background: #00207d;
+}
+
+.settings-img {
+    background-position: 87% 21%;
+}
+
+.find-img {
+    background-position: 25% 22%;
+}
+
+.run-img {
+    background-position: 0% 80%;
+}
+
+.shutdown-img {
+    background-position: 75% 79%;
+}
+
+.bg-img {
+    background-image: url(https://i.pinimg.com/originals/96/17/c0/9617c03faeb0986659acd2fa7ff87a26.png);
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    mix-blend-mode: multiply;
+}
+
+.start_menu-main-items .icon {
+    width: 30px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.start_menu-main-items-item-arrowright {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid black;
+    margin-left: auto;
+    margin-right: 7px;
+}
+
+.sub_programs {
+    bottom: 282px;
+}
+
+.start_menu-sub {
+    background: #c3c6cd;
+    border-top: 2px solid #deebf3;
+    border-left: 2px solid #deebf3;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    flex-direction: column;
+    width: 180px;
+    left: calc(100vw - 80vw);
+    padding: 0;
+    display: none;
+    position: absolute;
+}
+
+.start_menu-sub-items-item {
+    display: flex;
+    align-items: center;
+}
+
+.start_menu-sub-items-item:hover {
+    background: #00207d;
+}
+
+.start_menu-sub .icon {
+    width: 23px;
+    height: 23px;
+}
+
+.start_menu-sub-items-item-title {
+    margin: 7px 0;
+}
+
+.start_menu-main-items-item-arrowright {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid black;
+    margin-left: auto;
+    margin-right: 7px;
+}
+
+.computer {
+    top: 10px;
+    left: 10px;
+}
+
+.desktop-icon {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.computer_icon {
+    width: 55px;
+    background: url(https://www.pngkey.com/png/full/44-448393_windows-95-icons-png-picture-free-stock-icon.png);
+    background-size: contain;
+}
+
+.desktop-icon_icon {
+    height: 50px;
+}
+
+.desktop-icon_text {
+    color: white;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.calculator {
+    top: 90px;
+    left: 10px;
+}
+
+.calculator_icon {
+    width: 55px;
+    background: url(https://64.media.tumblr.com/c8d12905363fffff08c37f8eca363590/2e42f87909d61a4f-81/s540x810/4c69d12663cfa490bdc6f7f07bd8ae881dcc58cf.png);
+    background-size: contain;
+}
+
+.browser {
+    top: 190px;
+    left: 10px;
+}
+
+.browser_icon {
+    width: 105px;
+    background: url(https://cdn.discordapp.com/attachments/1206252392065138712/1209980171424370758/png-transparent-windows-95-computer-icons-internet-explorer-internet-explorer-microsoft-area-windows-98-removebg-preview.png?ex=65e8e4d9&is=65d66fd9&hm=64d1c9ff78b44e73b2ef6635b1b5ab15d6e5a0baf83d5f5492767b845c1be976&);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.explorer {
+    top: 290px;
+    left: 10px;
+}
+
+.explorer_icon {
+    width: 55px;
+    background: url(https://cdn.discordapp.com/attachments/1206252392065138712/1209980654746599444/gratis-png-directorio-de-windows-95-iconos-de-computadora-de-windows-98-publicidad-de-bienes-esteticos-removebg-preview.png?ex=65e8e54c&is=65d6704c&hm=a563cc16f255134fe1fb092174184331edd85b495d52fc3f7a34c36cc943a035&);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.javascript {
+    top: 390px;
+    left: 10px;
+}
+
+.javascript_icon {
+    width: 55px;
+    background: url(https://64.media.tumblr.com/0a8c1050bcb86fb9080622b1b6e47a05/404a45651ed80451-54/s540x810/d83a7a23ae7019b498ca4a01cf1c21870ee21ca0.png);
+    background-size: contain;
+}
+
+.notepad {
+    top: 490px;
+    left: 10px;
+}
+
+.notepad_icon {
+    width: 55px;
+    background: url(https://64.media.tumblr.com/5b721f82bf458ec88d5e81c8a0e6c00f/d54cc7b03470c013-98/s540x810/3b87d2f3fe16c2b605250c6ee952dd773003d21b.png);
+    background-size: contain;
+}
+
+.paint {
+    top: 590px;
+    left: 10px;
+}
+
+.paint_icon {
+    width: 30px;
+    background: url(https://cdn.discordapp.com/attachments/1206252392065138712/1209982591302897755/Microsoft_Paint_Logo_1995-1998_Alternative.webp?ex=65e8e71a&is=65d6721a&hm=b09a0bbda407ca7c7b6987b5692012202e92f4c669eb658fb581359dba182c89&);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.desktop-icon {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.desktop-icon_icon {
+    height: 50px;
+}
+
+.desktop-icon_text {
+    color: white;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    user-select: none;
+}
+
+.menu-open {
+    display: flex;
+}
+
+#output {
+    border: 1px solid #ccc;
+    width: calc(100% - 20px);
+    height: calc(30vh - 130px);
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    color: white;
+    background-color: #333;
+    overflow-y: auto;
+}
+
+#green-line {
+    background-color: green;
+    height: 50px;
+    width: 100%;
+}
+
+.button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #777;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.button img {
+    width: 100%;
+    height: 100%;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#codeInput {
+    font-family: 'Courier New', monospace;
+}
+
+.draggable-window {
+    position: absolute;
+    width: 600px;
+    height: 500px;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.not-draggable-window {
+    position: absolute;
+    width: 600px;
+    height: 500px;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #777;
+    border-radius: 3px;
+}
+
+.compile-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #777;
+    border-radius: 3px;
+    margin-right: 30px;
+}
+
+.title-bar {
+    background-color: #333;
+    color: white;
+    font-size: 22px;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+    cursor: move;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+#startMenu {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    width: 200px;
+    height: 80%;
+    background-color: #f0f0f0;
+    border: 1px solid #777;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    z-index: 9999;
+}
+
+#startMenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#startMenu li {
+    margin-bottom: 5px;
+}
+
+#startButton:hover #startMenu {
+    display: block;
+}
+
+#fileExplorerContent {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 5px;
+}
+
+.entry {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.entry:hover {
+    background-color: #f0f0f0;
+}
+
+.entry img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.entry span {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70px;
+}
+
+.big-white-text {
+    font-size: 128px;
+    color: white;
+}
